@@ -1,2 +1,2 @@
-# automatitation1
+# automation1
 uso de github actions
