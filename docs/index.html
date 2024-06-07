@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Dashboard</title>
+    <!-- Load Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Financial Dashboard</h1>
+    <div id="chart"></div>
+
+    <script>
+        // Load data
+        Plotly.d3.csv('data/processed/financial_data_processed.csv', function(data){
+            var dates = [];
+            var returns = [];
+            for(var i=0; i<data.length; i++){
+                dates.push(data[i]['date']);
+                returns.push(data[i]['returns']);
+            }
+
+            // Create plot
+            var trace = {
+                x: dates,
+                y: returns,
+                type: 'bar',
+                marker: {
+                    color: 'rgb(158,202,225)',
+                    opacity: 0.6,
+                    line: {
+                        color: 'rgb(8,48,107)',
+                        width: 1.5
+                    }
+                }
+            };
+            var layout = {
+                title: 'Returns',
+                xaxis: {
+                    title: 'Date'
+                },
+                yaxis: {
+                    title: 'Returns'
+                }
+            };
+            Plotly.newPlot('chart', [trace], layout);
+        });
+    </script>
+</body>
+</html>
