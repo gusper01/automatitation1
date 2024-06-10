@@ -9,10 +9,7 @@ on:
       - main
   schedule:
     - cron: '0 0 * * *'
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
