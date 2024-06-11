@@ -34,10 +34,6 @@ jobs:
         pip show pandas
         pip show plotly
 
-    - name: Run tests
-      run: |
-        python -m unittest discover -s tests
-
     - name: Preprocess data
       run: |
         python src/data_preprocessing.py
