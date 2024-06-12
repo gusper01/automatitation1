@@ -1,17 +1,16 @@
+import os
 import pandas as pd
 
 def load_data(file_path):
-    print(f"Loading data from {file_path}")
     return pd.read_csv(file_path)
 
 def preprocess_data(df):
-    print("Preprocessing data")
     df = df.dropna()
     df['returns'] = df['price'].pct_change().dropna()
     return df
 
 def save_data(df, file_path):
-    print(f"Saving data to {file_path}")
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)  # Create directory if it doesn't exist
     df.to_csv(file_path, index=False)
 
 if __name__ == "__main__":
@@ -21,4 +20,3 @@ if __name__ == "__main__":
     df = load_data(raw_data_path)
     df = preprocess_data(df)
     save_data(df, processed_data_path)
-    print("Data preprocessing complete")
