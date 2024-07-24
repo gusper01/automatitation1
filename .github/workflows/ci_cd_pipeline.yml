@@ -2,7 +2,8 @@ name: VaR and Dashboard Pipeline
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Ejecuta cada hora
+   # - cron: '0 * * * *'  # Ejecuta cada hora
+      - cron: '0 6 * * *'
   push:
     branches:
       - main
